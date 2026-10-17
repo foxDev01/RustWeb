@@ -1,0 +1,14 @@
+# Rust build output
+/target
+**/*.rs.bk
+
+# Local SQLite databases, created at runtime by `cargo run`. Never committed:
+# the file holds this machine's task list, not something to share.
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Scratch request bodies written by the curl examples in README.md.
+/body.json
+opencode.json

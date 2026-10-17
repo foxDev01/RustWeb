@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1 class="app__title">Task Tracker</h1>
+        <p class="app__subtitle">
+          A small task manager built with Rust, Axum and SQLite.
+        </p>
+      </header>
+
+      <form id="create-form" class="card" autocomplete="off">
+        <h2 class="card__title">New task</h2>
+
+        <label class="field" for="create-title">
+          <span class="field__label">
+            Title <span class="field__hint">(required, max 200 characters)</span>
+          </span>
+          <input
+            id="create-title"
+            class="field__input"
+            name="title"
+            type="text"
+            maxlength="200"
+            placeholder="e.g. Write the README"
+            required
+          />
+        </label>
+
+        <label class="field" for="create-description">
+          <span class="field__label">
+            Description
+            <span class="field__hint">(optional, max 2000 characters)</span>
+          </span>
+          <textarea
+            id="create-description"
+            class="field__input"
+            name="description"
+            rows="2"
+            maxlength="2000"
+            placeholder="Any extra details"
+          ></textarea>
+        </label>
+
+        <button type="submit" class="button button--primary">Add task</button>
+      </form>
+
+      <section class="card">
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button
+              type="button"
+              class="filter is-active"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="filter"
+              data-filter="active"
+              aria-pressed="false"
+            >
+              Active
+            </button>
+            <button
+              type="button"
+              class="filter"
+              data-filter="completed"
+              aria-pressed="false"
+            >
+              Completed
+            </button>
+          </div>
+          <span id="task-count" class="toolbar__count"></span>
+        </div>
+
+        <!-- Messages from the server (validation errors, storage failures). -->
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+
+        <ul id="task-list" class="tasks"></ul>
+        <p id="empty-state" class="empty" hidden>No tasks to show.</p>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+[package]
+name = "rust_task_tracker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.9"
+# `bundled` compiles SQLite from source, so no system library is required.
+rusqlite = { version = "0.30.0", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+tokio = { version = "1.53.3", features = ["full"] }
+
+[dev-dependencies]
+# `ServiceExt::oneshot` lets tests drive the router without binding a socket.
+tower = { version = "0.5.3", features = ["util"] }
